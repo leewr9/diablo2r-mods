@@ -1,9 +1,9 @@
 {
   "name": "Custom Armor Models",
-  "description": "Change equipped armor visuals to preferred styles.",
-  "author": "Blizzard Entertainment, Inc.",
-  "website": "https://classic.battle.net/diablo2exp/",
-  "version": "1.14d",
+  "description": "Allows changing the visual model of equipped armor to a preferred style.",
+  "author": "Rooam Lee",
+  "website": "https://github.com/leewr9/diablo2r-mods/tree/master/mods/CustomArmorModels",
+  "version": "1.1",
   "config": [
     {
       "id": "ArmorStyle",
