@@ -1,6 +1,7 @@
-const selectHelmet = `hd\\items\\armor\\helmet\\${config['HelmetStyle']}.json`;
-const selectShield = `hd\\items\\armor\\shield\\${config['ShieldStyle']}.json`;
-const selectArmor = config['ArmorStyle'];
+if (D2RMM.getVersion == null || D2RMM.getVersion() < 1.6) {
+  D2RMM.error('Requires D2RMM version 1.6 or higher.');
+  return;
+}
 
 const ITEM_HELMETS = [
   'helmet\\assault_helmet',
@@ -69,47 +70,55 @@ const ITEM_SHIELDS = [
 ];
 
 const armorDirFilename = 'hd\\items\\armor\\';
-
-const selectHelmetData = D2RMM.readJson(selectHelmet);
-for (const i in ITEM_HELMETS) {
-  D2RMM.readJson(`${armorDirFilename + ITEM_HELMETS[i]}.json`);
-  D2RMM.writeJson(`${armorDirFilename + ITEM_HELMETS[i]}.json`, selectHelmetData);
+if (config['HelmetStyle'] != 'Default') {
+  const selectHelmet = `hd\\items\\armor\\helmet\\${config['HelmetStyle']}.json`;
+  const selectHelmetData = D2RMM.readJson(selectHelmet);
+  for (const i in ITEM_HELMETS) {
+    D2RMM.readJson(`${armorDirFilename + ITEM_HELMETS[i]}.json`);
+    D2RMM.writeJson(`${armorDirFilename + ITEM_HELMETS[i]}.json`, selectHelmetData);
+  }
 }
-const selectShieldData = D2RMM.readJson(selectShield);
-for (const i in ITEM_SHIELDS) {
-  D2RMM.readJson(`${armorDirFilename + ITEM_SHIELDS[i]}.json`);
-  D2RMM.writeJson(`${armorDirFilename + ITEM_SHIELDS[i]}.json`, selectShieldData);
-}
-
-let rArm = 0
-let lArm = 0
-let Torso = 0
-let Legs = 0
-let rSPad = 0
-let lSPad = 0
-
-const armorFilename = 'global\\excel\\armor.txt';
-const armor = D2RMM.readTsv(armorFilename);
-for (const i in armor.rows) {
-  if (armor.rows[i].name.trim() == selectArmor){
-    rArm = armor.rows[i].rArm;
-    lArm = armor.rows[i].lArm;
-    Torso = armor.rows[i].Torso;
-    Legs = armor.rows[i].Legs;
-    rSPad = armor.rows[i].rSPad;
-    lSPad = armor.rows[i].lSPad;
-    break;
+if (config['ShieldStyle'] != 'Default') {
+  const selectShield = `hd\\items\\armor\\shield\\${config['ShieldStyle']}.json`;
+  const selectShieldData = D2RMM.readJson(selectShield);
+  for (const i in ITEM_SHIELDS) {
+    D2RMM.readJson(`${armorDirFilename + ITEM_SHIELDS[i]}.json`);
+    D2RMM.writeJson(`${armorDirFilename + ITEM_SHIELDS[i]}.json`, selectShieldData);
   }
 }
 
-for (const i in armor.rows) {
-  if (armor.rows[i].component == 1){
-    armor.rows[i].rArm = rArm;
-    armor.rows[i].lArm = lArm;
-    armor.rows[i].Torso = Torso;
-    armor.rows[i].Legs = Legs;
-    armor.rows[i].rSPad = rSPad;
-    armor.rows[i].lSPad = lSPad;
+if (config['ArmorStyle'] != 'Default') {
+  let rArm = 0
+  let lArm = 0
+  let Torso = 0
+  let Legs = 0
+  let rSPad = 0
+  let lSPad = 0
+
+  const armorFilename = 'global\\excel\\armor.txt';
+  const armor = D2RMM.readTsv(armorFilename);
+
+  for (const i in armor.rows) {
+    if (armor.rows[i].name.trim() == config['ArmorStyle']){
+      rArm = armor.rows[i].rArm;
+      lArm = armor.rows[i].lArm;
+      Torso = armor.rows[i].Torso;
+      Legs = armor.rows[i].Legs;
+      rSPad = armor.rows[i].rSPad;
+      lSPad = armor.rows[i].lSPad;
+      break;
+    }
   }
+
+  for (const i in armor.rows) {
+    if (armor.rows[i].component == 1){
+      armor.rows[i].rArm = rArm;
+      armor.rows[i].lArm = lArm;
+      armor.rows[i].Torso = Torso;
+      armor.rows[i].Legs = Legs;
+      armor.rows[i].rSPad = rSPad;
+      armor.rows[i].lSPad = lSPad;
+    }
+  }
+  D2RMM.writeTsv(armorFilename, armor);
 }
-D2RMM.writeTsv(armorFilename, armor);
