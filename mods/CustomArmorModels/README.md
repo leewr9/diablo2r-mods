@@ -4,6 +4,8 @@ This feature enables players to customize the in-game appearance of their equipp
 
 Note that, armor appearance may not be reflected in the character selection screen, but it will display correctly once you enter the game.
 
+![imgae](imgae.png)
+
 - Download Link
   - https://raw.githubusercontent.com/leewr9/diablo2r-mods/refs/heads/master/files/CustomArmorModels.zip
 - Nexsus Mods
