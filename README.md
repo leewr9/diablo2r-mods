@@ -4,10 +4,9 @@ This repository is dedicated to creating and sharing custom Diablo II Rresurrect
 
 ## Mods
 
-1. **Custom Armor Models**
-   - Allows changing the visual model of equipped armor to a preferred style.
-   - Nexsus Mods: https://www.nexusmods.com/diablo2resurrected/mods/780
-
+### [Custom Armor Models](https://raw.githubusercontent.com/leewr9/diablo2r-mods/refs/heads/master/files/CustomArmorModels.zip)
+- Allows changing the visual model of equipped armor to a preferred style.
+- Nexsus Mods: https://www.nexusmods.com/diablo2resurrected/mods/780
 
 ## License
 
