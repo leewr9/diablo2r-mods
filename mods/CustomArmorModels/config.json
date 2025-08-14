@@ -1,1 +1,5 @@
-{"ArmorStyle":"Full Plate Mail","HelmetStyle":"great_helm","ShieldStyle":"lidless_wall","ShiledStyle":"Default"}
+{
+  "ArmorStyle": "Default",
+  "HelmetStyle": "Default",
+  "ShiledStyle": "Default"
+}
