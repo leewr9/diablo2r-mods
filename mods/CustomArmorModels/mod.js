@@ -71,7 +71,7 @@ const ITEM_SHIELDS = [
 
 const armorDirFilename = "hd\\items\\armor\\";
 if (config["HelmetStyle"] != "Default") {
-  const selectHelmet = `hd\\items\\armor\\helmet\\${config["HelmetStyle"]}.json`;
+  const selectHelmet = `hd\\items\\armor\\${config["HelmetStyle"]}.json`;
   const selectHelmetData = D2RMM.readJson(selectHelmet);
   for (const i in ITEM_HELMETS) {
     D2RMM.readJson(`${armorDirFilename + ITEM_HELMETS[i]}.json`);
@@ -82,7 +82,7 @@ if (config["HelmetStyle"] != "Default") {
   }
 }
 if (config["ShieldStyle"] != "Default") {
-  const selectShield = `hd\\items\\armor\\shield\\${config["ShieldStyle"]}.json`;
+  const selectShield = `hd\\items\\armor\\${config["ShieldStyle"]}.json`;
   const selectShieldData = D2RMM.readJson(selectShield);
   for (const i in ITEM_SHIELDS) {
     D2RMM.readJson(`${armorDirFilename + ITEM_SHIELDS[i]}.json`);
