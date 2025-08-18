@@ -935,24 +935,24 @@ function changeItemColor(codes, color) {
 function changeInventoryAsset(type, asset) {
   if (
     config.armorStyle != "default" &&
-    (ARMOR_CODES.includes(type) || asset.startWith("armor"))
+    (ARMOR_CODES.includes(type) || asset.startsWith("armor"))
   ) {
     return config.armorStyle;
   }
   if (
     config.helmetStyle != "default" &&
     (HELMET_CODES.includes(type) ||
-      asset.startWith("helmet") ||
-      asset.startWith("pelt") ||
-      asset.startWith("circlet"))
+      asset.startsWith("helmet") ||
+      asset.startsWith("pelt") ||
+      asset.startsWith("circlet"))
   ) {
     return config.helmetStyle;
   }
   if (
     config.shieldStyle != "default" &&
     (SHIELD_CODES.includes(type) ||
-      asset.startWith("shield") ||
-      asset.startWith("voodoo_head"))
+      asset.startsWith("shield") ||
+      asset.startsWith("voodoo_head"))
   ) {
     return config.shieldStyle;
   }
