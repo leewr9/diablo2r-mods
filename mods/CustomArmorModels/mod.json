@@ -3,35 +3,35 @@
   "description": "Allows changing the visual model of equipped armor to a preferred style.",
   "author": "Rooam Lee",
   "website": "https://github.com/leewr9/diablo2r-mods/tree/master/mods/CustomArmorModels",
-  "version": "1.2",
+  "version": "1.3",
   "config": [
     {
       "id": "armorStyle",
       "type": "select",
       "name": "Armor Style",
       "description": "Select the appearance style for armor. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
-        { "value": "Quilted Armor", "label": "Quilted Armor" },
-        { "value": "Leather Armor", "label": "Leather Armor" },
-        { "value": "Hard Leather Armor", "label": "Hard Leather Armor" },
-        { "value": "Studded Leather", "label": "Studded Leather" },
-        { "value": "Ring Mail", "label": "Ring Mail" },
-        { "value": "Scale Mail", "label": "Scale Mail" },
-        { "value": "Chain Mail", "label": "Chain Mail" },
-        { "value": "Splint Mail", "label": "Splint Mail" },
-        { "value": "Breast Plate", "label": "Breast Plate" },
-        { "value": "Light Plate", "label": "Light Plate" },
-        { "value": "Plate Mail", "label": "Plate Mail" },
-        { "value": "Field Plate", "label": "Field Plate" },
-        { "value": "Gothic Plate", "label": "Gothic Plate" },
-        { "value": "Full Plate Mail", "label": "Full Plate Mail" },
-        { "value": "Ancient Armor", "label": "Ancient Armor" }
+        { "value": "armor\\quilted_armor", "label": "Quilted Armor" },
+        { "value": "armor\\leather_armor", "label": "Leather Armor" },
+        { "value": "armor\\hard_leather_armor", "label": "Hard Leather Armor" },
+        { "value": "armor\\studded_leather", "label": "Studded Leather" },
+        { "value": "armor\\ring_mail", "label": "Ring Mail" },
+        { "value": "armor\\scale_mail", "label": "Scale Mail" },
+        { "value": "armor\\chain_mail", "label": "Chain Mail" },
+        { "value": "armor\\splint_mail", "label": "Splint Mail" },
+        { "value": "armor\\breast_plate", "label": "Breast Plate" },
+        { "value": "armor\\light_plate", "label": "Light Plate" },
+        { "value": "armor\\plate_mail", "label": "Plate Mail" },
+        { "value": "armor\\field_plate", "label": "Field Plate" },
+        { "value": "armor\\gothic_plate", "label": "Gothic Plate" },
+        { "value": "armor\\full_plate_mail", "label": "Full Plate Mail" },
+        { "value": "armor\\ancient_armor", "label": "Ancient Armor" }
       ]
     },
     {
@@ -39,10 +39,10 @@
       "type": "select",
       "name": "Unique/Set Armor Color",
       "description": "Select the color for unique or set armor only. Default means no color change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Color)",
           "description": "Do not modify the value."
         },
@@ -74,10 +74,10 @@
       "type": "select",
       "name": "Helmet Style",
       "description": "Select the appearance style for helmets. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
@@ -129,10 +129,10 @@
       "type": "select",
       "name": "Unique/Set Helmet Color",
       "description": "Select the color for unique or set helmet only. Default means no color change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Color)",
           "description": "Do not modify the value."
         },
@@ -164,10 +164,10 @@
       "type": "select",
       "name": "Shield Style",
       "description": "Select the appearance style for shields. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
@@ -239,10 +239,10 @@
       "type": "select",
       "name": "Unique/Set Shield Color",
       "description": "Select the color for unique or set shield only. Default means no color change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Color)",
           "description": "Do not modify the value."
         },

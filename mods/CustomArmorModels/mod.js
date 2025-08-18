@@ -806,6 +806,45 @@ const SHIELD_CODES = [
 
 const armorDirFilename = "hd\\items\\armor\\";
 
+function findItemCode(select) {
+  const item = select.split("\\")[1].replaceAll("_", " ");
+  if (item == "cap hat") {
+    return "cap";
+  }
+
+  const armorFilename = "global\\excel\\armor.txt";
+  const armor = D2RMM.readTsv(armorFilename);
+
+  for (const i in armor.rows) {
+    const itemname = armor.rows[i].name.toLowerCase().trim();
+    if (itemname == item) {
+      return armor.rows[i].code;
+    }
+  }
+
+  const uniqueitemsFilename = "global\\excel\\uniqueitems.txt";
+  const uniqueitems = D2RMM.readTsv(uniqueitemsFilename);
+
+  for (const i in uniqueitems.rows) {
+    const itemindex = uniqueitems.rows[i].index.toLowerCase().trim();
+    if (itemindex == item) {
+      return uniqueitems.rows[i].code;
+    }
+  }
+
+  const setitemsFilename = "global\\excel\\setitems.txt";
+  const setitems = D2RMM.readTsv(setitemsFilename);
+
+  for (const i in setitems.rows) {
+    const itemindex = setitems.rows[i].index.toLowerCase().trim();
+    if (itemindex == item) {
+      return setitems.rows[i].item;
+    }
+  }
+
+  return "";
+}
+
 function changeItemStyle(items, select) {
   const selectItemFilename = `hd\\items\\armor\\${select}.json`;
   const selectItem = D2RMM.readJson(selectItemFilename);
@@ -815,57 +854,11 @@ function changeItemStyle(items, select) {
   }
 }
 
-function changeItemColor(codes, color) {
-  const uniqueitemsFilename = "global\\excel\\uniqueitems.txt";
-  const uniqueitems = D2RMM.readTsv(uniqueitemsFilename);
+function changeItemArmor(codes, select) {
+  const code = findItemCode(select);
 
-  for (const i in uniqueitems.rows) {
-    const code = uniqueitems.rows[i].code.trim();
-    if (codes.includes(code)) {
-      uniqueitems.rows[i].chrtransform = color;
-      uniqueitems.rows[i].invtransform = color;
-    }
-  }
-  D2RMM.writeTsv(uniqueitemsFilename, uniqueitems);
-
-  const setitemsFilename = "global\\excel\\setitems.txt";
-  const setitems = D2RMM.readTsv(setitemsFilename);
-
-  for (const i in setitems.rows) {
-    const code = setitems.rows[i].item.trim();
-    if (codes.includes(code)) {
-      setitems.rows[i].chrtransform = color;
-      setitems.rows[i].invtransform = color;
-    }
-  }
-  D2RMM.writeTsv(setitemsFilename, setitems);
-}
-
-function changeInventoryAsset(type, asset) {
-  if (config.armorStyle != "Default" && ARMOR_CODES.includes(type)) {
-    return `armor/${config.armorStyle.replaceAll(" ", "_").toLowerCase()}`;
-  }
-  if (config.helmetStyle != "Default" && HELMET_CODES.includes(type)) {
-    return config.helmetStyle;
-  }
-  if (config.shieldStyle != "Default" && SHIELD_CODES.includes(type)) {
-    return config.shieldStyle;
-  }
-  return asset;
-}
-
-if (config.helmetStyle != "Default") {
-  changeItemStyle(ITEM_HELMETS, config.helmetStyle);
-}
-if (config.shieldStyle != "Default") {
-  changeItemStyle(ITEM_SHIELDS, config.shieldStyle);
-}
-if (config.armorStyle != "Default") {
-  changeItemStyle(
-    ITEM_ARMORS,
-    `armor/${config.armorStyle.replaceAll(" ", "_").toLowerCase()}`,
-  );
-
+  let Transform = 0;
+  let InvTrans = 0;
   let rArm = 0;
   let lArm = 0;
   let Torso = 0;
@@ -877,37 +870,115 @@ if (config.armorStyle != "Default") {
   const armor = D2RMM.readTsv(armorFilename);
 
   for (const i in armor.rows) {
-    if (armor.rows[i].name.trim() == config.armorStyle) {
-      rArm = armor.rows[i].rArm;
-      lArm = armor.rows[i].lArm;
-      Torso = armor.rows[i].Torso;
-      Legs = armor.rows[i].Legs;
-      rSPad = armor.rows[i].rSPad;
-      lSPad = armor.rows[i].lSPad;
+    const itemcode = armor.rows[i].code;
+    if (itemcode == code && codes.includes(code)) {
+      Transform = armor.rows[i].Transform;
+      InvTrans = armor.rows[i].InvTrans;
+
+      if (ARMOR_CODES.includes(code)) {
+        rArm = armor.rows[i].rArm;
+        lArm = armor.rows[i].lArm;
+        Torso = armor.rows[i].Torso;
+        Legs = armor.rows[i].Legs;
+        rSPad = armor.rows[i].rSPad;
+        lSPad = armor.rows[i].lSPad;
+      }
       break;
     }
   }
 
   for (const i in armor.rows) {
-    if (armor.rows[i].component == 1) {
-      armor.rows[i].rArm = rArm;
-      armor.rows[i].lArm = lArm;
-      armor.rows[i].Torso = Torso;
-      armor.rows[i].Legs = Legs;
-      armor.rows[i].rSPad = rSPad;
-      armor.rows[i].lSPad = lSPad;
+    const itemcode = armor.rows[i].code;
+    if (codes.includes(itemcode)) {
+      armor.rows[i].Transform = Transform;
+      armor.rows[i].InvTrans = InvTrans;
+
+      if (ARMOR_CODES.includes(code)) {
+        armor.rows[i].rArm = rArm;
+        armor.rows[i].lArm = lArm;
+        armor.rows[i].Torso = Torso;
+        armor.rows[i].Legs = Legs;
+        armor.rows[i].rSPad = rSPad;
+        armor.rows[i].lSPad = lSPad;
+      }
     }
   }
   D2RMM.writeTsv(armorFilename, armor);
 }
 
-if (config.armorColor != "Default") {
+function changeItemColor(codes, color) {
+  const uniqueitemsFilename = "global\\excel\\uniqueitems.txt";
+  const uniqueitems = D2RMM.readTsv(uniqueitemsFilename);
+
+  for (const i in uniqueitems.rows) {
+    const itemcode = uniqueitems.rows[i].code.trim();
+    if (codes.includes(itemcode)) {
+      uniqueitems.rows[i].chrtransform = color;
+      uniqueitems.rows[i].invtransform = color;
+    }
+  }
+  D2RMM.writeTsv(uniqueitemsFilename, uniqueitems);
+
+  const setitemsFilename = "global\\excel\\setitems.txt";
+  const setitems = D2RMM.readTsv(setitemsFilename);
+
+  for (const i in setitems.rows) {
+    const itemcode = setitems.rows[i].item.trim();
+    if (codes.includes(itemcode)) {
+      setitems.rows[i].chrtransform = color;
+      setitems.rows[i].invtransform = color;
+    }
+  }
+  D2RMM.writeTsv(setitemsFilename, setitems);
+}
+
+function changeInventoryAsset(type, asset) {
+  if (
+    config.armorStyle != "default" &&
+    (ARMOR_CODES.includes(type) || asset.startWith("armor"))
+  ) {
+    return config.armorStyle;
+  }
+  if (
+    config.helmetStyle != "default" &&
+    (HELMET_CODES.includes(type) ||
+      asset.startWith("helmet") ||
+      asset.startWith("pelt") ||
+      asset.startWith("circlet"))
+  ) {
+    return config.helmetStyle;
+  }
+  if (
+    config.shieldStyle != "default" &&
+    (SHIELD_CODES.includes(type) ||
+      asset.startWith("shield") ||
+      asset.startWith("voodoo_head"))
+  ) {
+    return config.shieldStyle;
+  }
+  return asset;
+}
+
+if (config.armorStyle != "default") {
+  changeItemStyle(ITEM_ARMORS, config.armorStyle);
+  changeItemArmor(ARMOR_CODES, config.armorStyle);
+}
+if (config.helmetStyle != "default") {
+  changeItemStyle(ITEM_HELMETS, config.helmetStyle);
+  changeItemArmor(HELMET_CODES, config.helmetStyle);
+}
+if (config.shieldStyle != "default") {
+  changeItemStyle(ITEM_SHIELDS, config.shieldStyle);
+  changeItemArmor(SHIELD_CODES, config.shieldStyle);
+}
+
+if (config.armorColor != "default") {
   changeItemColor(ARMOR_CODES, config.armorColor);
 }
-if (config.helmetColor != "Default") {
+if (config.helmetColor != "default") {
   changeItemColor(HELMET_CODES, config.helmetColor);
 }
-if (config.shieldColor != "Default") {
+if (config.shieldColor != "default") {
   changeItemColor(SHIELD_CODES, config.shieldColor);
 }
 
