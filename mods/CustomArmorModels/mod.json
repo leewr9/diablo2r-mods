@@ -6,9 +6,10 @@
   "version": "1.2",
   "config": [
     {
-      "id": "ArmorStyle",
+      "id": "armorStyle",
       "type": "select",
       "name": "Armor Style",
+      "description": "Select the appearance style for armor. Default means no style change.",
       "defaultValue": "Default",
       "options": [
         {
@@ -34,9 +35,45 @@
       ]
     },
     {
-      "id": "HelmetStyle",
+      "id": "armorColor",
+      "type": "select",
+      "name": "Unique/Set Armor Color",
+      "description": "Select the color for unique or set armor only. Default means no color change.",
+      "defaultValue": "Default",
+      "options": [
+        {
+          "value": "Default",
+          "label": "Default (Original Color)",
+          "description": "Do not modify the value."
+        },
+        { "value": "whit", "label": "White" },
+        { "value": "lgry", "label": "Light Grey" },
+        { "value": "dgry", "label": "Dark Grey" },
+        { "value": "blac", "label": "Black" },
+        { "value": "lblu", "label": "Light Blue" },
+        { "value": "dblu", "label": "Dark Blue" },
+        { "value": "cblu", "label": "Crystal Blue" },
+        { "value": "lred", "label": "Light Red" },
+        { "value": "dred", "label": "Dark Red" },
+        { "value": "cred", "label": "Crystal Red" },
+        { "value": "lgrn", "label": "Light Green" },
+        { "value": "dgrn", "label": "Dark Green" },
+        { "value": "cgrn", "label": "Crystal Green" },
+        { "value": "lyel", "label": "Light Yellow" },
+        { "value": "dyel", "label": "Dark Yellow" },
+        { "value": "lgld", "label": "Light Gold" },
+        { "value": "dgld", "label": "Dark Gold" },
+        { "value": "lpur", "label": "Light Purple" },
+        { "value": "dpur", "label": "Dark Purple" },
+        { "value": "oran", "label": "Orange" },
+        { "value": "bwht", "label": "Bright White" }
+      ]
+    },
+    {
+      "id": "helmetStyle",
       "type": "select",
       "name": "Helmet Style",
+      "description": "Select the appearance style for helmets. Default means no style change.",
       "defaultValue": "Default",
       "options": [
         {
@@ -88,9 +125,45 @@
       ]
     },
     {
-      "id": "ShieldStyle",
+      "id": "helmetColor",
+      "type": "select",
+      "name": "Unique/Set Helmet Color",
+      "description": "Select the color for unique or set helmet only. Default means no color change.",
+      "defaultValue": "Default",
+      "options": [
+        {
+          "value": "Default",
+          "label": "Default (Original Color)",
+          "description": "Do not modify the value."
+        },
+        { "value": "whit", "label": "White" },
+        { "value": "lgry", "label": "Light Grey" },
+        { "value": "dgry", "label": "Dark Grey" },
+        { "value": "blac", "label": "Black" },
+        { "value": "lblu", "label": "Light Blue" },
+        { "value": "dblu", "label": "Dark Blue" },
+        { "value": "cblu", "label": "Crystal Blue" },
+        { "value": "lred", "label": "Light Red" },
+        { "value": "dred", "label": "Dark Red" },
+        { "value": "cred", "label": "Crystal Red" },
+        { "value": "lgrn", "label": "Light Green" },
+        { "value": "dgrn", "label": "Dark Green" },
+        { "value": "cgrn", "label": "Crystal Green" },
+        { "value": "lyel", "label": "Light Yellow" },
+        { "value": "dyel", "label": "Dark Yellow" },
+        { "value": "lgld", "label": "Light Gold" },
+        { "value": "dgld", "label": "Dark Gold" },
+        { "value": "lpur", "label": "Light Purple" },
+        { "value": "dpur", "label": "Dark Purple" },
+        { "value": "oran", "label": "Orange" },
+        { "value": "bwht", "label": "Bright White" }
+      ]
+    },
+    {
+      "id": "shieldStyle",
       "type": "select",
       "name": "Shield Style",
+      "description": "Select the appearance style for shields. Default means no style change.",
       "defaultValue": "Default",
       "options": [
         {
@@ -160,6 +233,48 @@
           "label": "Zombie Head (Necromancer)"
         }
       ]
+    },
+    {
+      "id": "shieldColor",
+      "type": "select",
+      "name": "Unique/Set Shield Color",
+      "description": "Select the color for unique or set shield only. Default means no color change.",
+      "defaultValue": "Default",
+      "options": [
+        {
+          "value": "Default",
+          "label": "Default (Original Color)",
+          "description": "Do not modify the value."
+        },
+        { "value": "whit", "label": "White" },
+        { "value": "lgry", "label": "Light Grey" },
+        { "value": "dgry", "label": "Dark Grey" },
+        { "value": "blac", "label": "Black" },
+        { "value": "lblu", "label": "Light Blue" },
+        { "value": "dblu", "label": "Dark Blue" },
+        { "value": "cblu", "label": "Crystal Blue" },
+        { "value": "lred", "label": "Light Red" },
+        { "value": "dred", "label": "Dark Red" },
+        { "value": "cred", "label": "Crystal Red" },
+        { "value": "lgrn", "label": "Light Green" },
+        { "value": "dgrn", "label": "Dark Green" },
+        { "value": "cgrn", "label": "Crystal Green" },
+        { "value": "lyel", "label": "Light Yellow" },
+        { "value": "dyel", "label": "Dark Yellow" },
+        { "value": "lgld", "label": "Light Gold" },
+        { "value": "dgld", "label": "Dark Gold" },
+        { "value": "lpur", "label": "Light Purple" },
+        { "value": "dpur", "label": "Dark Purple" },
+        { "value": "oran", "label": "Orange" },
+        { "value": "bwht", "label": "Bright White" }
+      ]
+    },
+    {
+      "id": "inventoryStyleEnabled",
+      "type": "checkbox",
+      "name": "Apply Style in Inventory",
+      "description": "Apply the selected style changes also in the inventory view.",
+      "defaultValue": false
     }
   ]
 }

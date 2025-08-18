@@ -1,5 +1,9 @@
 {
-  "ArmorStyle": "Default",
-  "HelmetStyle": "Default",
-  "ShiledStyle": "Default"
+  "armorStyle": "Default",
+  "armorColor": "Default",
+  "helmetStyle": "Default",
+  "helmetColor": "Default",
+  "shieldStyle": "Default",
+  "shieldColor": "Default",
+  "inventoryStyleEnabled": false
 }
