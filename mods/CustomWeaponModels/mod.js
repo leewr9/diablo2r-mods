@@ -570,7 +570,11 @@ function changeItemWeapon(codes, select) {
       if (ITEM_ONE_HANDS.includes(select)) {
         weapons.rows[i].wclass = wclass;
       }
-      if (ITEM_TWO_HANDS.includes(select)) {
+      else if (ITEM_TWO_HANDS.includes(select)) {
+        weapons.rows[i]["2handedwclass"] = twohandedwclass;
+      }
+      else {
+        weapons.rows[i].wclass = wclass;
         weapons.rows[i]["2handedwclass"] = twohandedwclass;
       }
     }
