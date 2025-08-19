@@ -10,10 +10,10 @@
       "type": "select",
       "name": "One Hand Style",
       "description": "Select the appearance style for one handed weapons. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
@@ -147,10 +147,10 @@
       "type": "select",
       "name": "Two Hand Style",
       "description": "Select the appearance style for two handed weapons. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
@@ -237,10 +237,10 @@
       "type": "select",
       "name": "Bow Style",
       "description": "Select the appearance style for bows. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
@@ -278,10 +278,10 @@
       "type": "select",
       "name": "Claw Style",
       "description": "Select the appearance style for assassin claws. Default means no style change.",
-      "defaultValue": "Default",
+      "defaultValue": "default",
       "options": [
         {
-          "value": "Default",
+          "value": "default",
           "label": "Default (Original Appearance)",
           "description": "Do not modify the value."
         },
