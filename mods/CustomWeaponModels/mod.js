@@ -549,9 +549,9 @@ function changeItemStyle(items, select) {
 function changeItemWeapon(codes, select) {
   const code = findItemCode(select);
 
+  let component = 5;
   let wclass = "1hs";
   let twohandedwclass = "2hs";
-  let component = 5;
 
   const weaponFilename = "global\\excel\\weapons.txt";
   const weapons = D2RMM.readTsv(weaponFilename);
@@ -559,9 +559,9 @@ function changeItemWeapon(codes, select) {
   for (const i in weapons.rows) {
     const itemcode = weapons.rows[i].code;
     if (itemcode == code && codes.includes(code)) {
+      component = weapons.rows[i].component;
       wclass = weapons.rows[i].wclass;
       twohandedwclass = weapons.rows[i]["2handedwclass"];
-      component = weapons.rows[i].component;
       break;
     }
   }
@@ -587,25 +587,29 @@ function changeItemWeapon(codes, select) {
 function changeInventoryAsset(type, asset) {
   if (
     config.oneHandStyle != "default" &&
-    (ONE_HAND_CODES.includes(type) || ITEM_ONE_HANDS.includes(asset))
+    (ONE_HAND_CODES.includes(type) ||
+      ITEM_ONE_HANDS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.oneHandStyle;
   }
   if (
     config.twoHandStyle != "default" &&
-    (TWO_HAND_CODES.includes(type) || ITEM_TWO_HANDS.includes(asset))
+    (TWO_HAND_CODES.includes(type) ||
+      ITEM_TWO_HANDS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.twoHandStyle;
   }
   if (
     config.bowStyle != "default" &&
-    (BOW_CODES.includes(type) || ITEM_BOWS.includes(asset))
+    (BOW_CODES.includes(type) ||
+      ITEM_BOWS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.bowStyle;
   }
   if (
     config.clawStyle != "default" &&
-    (CLAW_CODES.includes(type) || ITEM_CLAWS.includes(asset))
+    (CLAW_CODES.includes(type) ||
+      ITEM_CLAWS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.clawStyle;
   }

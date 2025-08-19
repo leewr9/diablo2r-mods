@@ -868,7 +868,6 @@ function changeItemArmor(codes, select) {
 
   let Transform = 0;
   let InvTrans = 0;
-  let component = 0;
   let rArm = 0;
   let lArm = 0;
   let Torso = 0;
@@ -884,7 +883,6 @@ function changeItemArmor(codes, select) {
     if (itemcode == code && codes.includes(code)) {
       Transform = armor.rows[i].Transform;
       InvTrans = armor.rows[i].InvTrans;
-      component = armor.rows[i].component;
 
       if (ARMOR_CODES.includes(code)) {
         rArm = armor.rows[i].rArm;
@@ -903,7 +901,6 @@ function changeItemArmor(codes, select) {
     if (codes.includes(itemcode)) {
       armor.rows[i].Transform = Transform;
       armor.rows[i].InvTrans = InvTrans;
-      armor.rows[i].component = component;
 
       if (ARMOR_CODES.includes(code)) {
         armor.rows[i].rArm = rArm;
@@ -947,19 +944,22 @@ function changeItemColor(codes, color) {
 function changeInventoryAsset(type, asset) {
   if (
     config.armorStyle != "default" &&
-    (ARMOR_CODES.includes(type) || ITEM_ARMORS.includes(asset))
+    (ARMOR_CODES.includes(type) ||
+      ITEM_ARMORS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.armorStyle;
   }
   if (
     config.helmetStyle != "default" &&
-    (HELMET_CODES.includes(type) || ITEM_HELMETS.includes(asset))
+    (HELMET_CODES.includes(type) ||
+      ITEM_HELMETS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.helmetStyle;
   }
   if (
     config.shieldStyle != "default" &&
-    (SHIELD_CODES.includes(type) || ITEM_SHIELDS.includes(asset))
+    (SHIELD_CODES.includes(type) ||
+      ITEM_SHIELDS.includes(asset.replaceAll("/", "\\")))
   ) {
     return config.shieldStyle;
   }
