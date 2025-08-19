@@ -204,14 +204,14 @@
           "value": "shield\\heavens_taebaek",
           "label": "Heavens Taebaek (Heaven's Brethren)"
         },
-        { "value": "shield\\arge", "label": "Targe (Paladin)" },
-        { "value": "shield\\ondache", "label": "Rondache (Paladin)" },
+        { "value": "shield\\targe", "label": "Targe (Paladin)" },
+        { "value": "shield\\rondache", "label": "Rondache (Paladin)" },
         {
-          "value": "shield\\eraldic_shield",
+          "value": "shield\\heraldic_shield",
           "label": "Heraldic Shield (Paladin)"
         },
-        { "value": "shield\\erin_shield", "label": "Aerin Shield (Paladin)" },
-        { "value": "shield\\rown_shield", "label": "Crown Shield (Paladin)" },
+        { "value": "shield\\aerin_shield", "label": "Aerin Shield (Paladin)" },
+        { "value": "shield\\crown_shield", "label": "Crown Shield (Paladin)" },
         {
           "value": "voodoo_head\\demon_head",
           "label": "Demon Head (Necromancer)"
