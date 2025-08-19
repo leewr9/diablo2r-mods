@@ -1,4 +1,7 @@
 {
-  "OneHandStyle": "Default",
-  "TwoHandStyle": "Default"
+  "oneHandStyle": "default",
+  "twoHandStyle": "default",
+  "bowStyle": "default",
+  "clawStyle": "default",
+  "inventoryStyleEnabled": false
 }
