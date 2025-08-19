@@ -816,7 +816,10 @@ function findItemCode(select) {
   const armor = D2RMM.readTsv(armorFilename);
 
   for (const i in armor.rows) {
-    const itemname = armor.rows[i].name.replaceAll("'s", "s").toLowerCase().trim();
+    const itemname = armor.rows[i].name
+      .replaceAll("'s", "s")
+      .toLowerCase()
+      .trim();
     if (itemname == item) {
       return armor.rows[i].code;
     }
@@ -826,7 +829,10 @@ function findItemCode(select) {
   const uniqueitems = D2RMM.readTsv(uniqueitemsFilename);
 
   for (const i in uniqueitems.rows) {
-    const itemindex = uniqueitems.rows[i].index.replaceAll("'s", "s").toLowerCase().trim();
+    const itemindex = uniqueitems.rows[i].index
+      .replaceAll("'s", "s")
+      .toLowerCase()
+      .trim();
     if (itemindex == item) {
       return uniqueitems.rows[i].code;
     }
@@ -836,7 +842,10 @@ function findItemCode(select) {
   const setitems = D2RMM.readTsv(setitemsFilename);
 
   for (const i in setitems.rows) {
-    const itemindex = setitems.rows[i].index.replaceAll("'s", "s").toLowerCase().trim();
+    const itemindex = setitems.rows[i].index
+      .replaceAll("'s", "s")
+      .toLowerCase()
+      .trim();
     if (itemindex == item) {
       return setitems.rows[i].item;
     }
