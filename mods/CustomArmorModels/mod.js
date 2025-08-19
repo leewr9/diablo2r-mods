@@ -816,7 +816,7 @@ function findItemCode(select) {
   const armor = D2RMM.readTsv(armorFilename);
 
   for (const i in armor.rows) {
-    const itemname = armor.rows[i].name.toLowerCase().trim();
+    const itemname = armor.rows[i].name.replaceAll("'s", "s").toLowerCase().trim();
     if (itemname == item) {
       return armor.rows[i].code;
     }
@@ -826,7 +826,7 @@ function findItemCode(select) {
   const uniqueitems = D2RMM.readTsv(uniqueitemsFilename);
 
   for (const i in uniqueitems.rows) {
-    const itemindex = uniqueitems.rows[i].index.toLowerCase().trim();
+    const itemindex = uniqueitems.rows[i].index.replaceAll("'s", "s").toLowerCase().trim();
     if (itemindex == item) {
       return uniqueitems.rows[i].code;
     }
@@ -836,7 +836,7 @@ function findItemCode(select) {
   const setitems = D2RMM.readTsv(setitemsFilename);
 
   for (const i in setitems.rows) {
-    const itemindex = setitems.rows[i].index.toLowerCase().trim();
+    const itemindex = setitems.rows[i].index.replaceAll("'s", "s").toLowerCase().trim();
     if (itemindex == item) {
       return setitems.rows[i].item;
     }
@@ -935,24 +935,19 @@ function changeItemColor(codes, color) {
 function changeInventoryAsset(type, asset) {
   if (
     config.armorStyle != "default" &&
-    (ARMOR_CODES.includes(type) || asset.startsWith("armor"))
+    (ARMOR_CODES.includes(type) || ITEM_ARMORS.includes(asset))
   ) {
     return config.armorStyle;
   }
   if (
     config.helmetStyle != "default" &&
-    (HELMET_CODES.includes(type) ||
-      asset.startsWith("helmet") ||
-      asset.startsWith("pelt") ||
-      asset.startsWith("circlet"))
+    (HELMET_CODES.includes(type) || ITEM_HELMETS.includes(asset))
   ) {
     return config.helmetStyle;
   }
   if (
     config.shieldStyle != "default" &&
-    (SHIELD_CODES.includes(type) ||
-      asset.startsWith("shield") ||
-      asset.startsWith("voodoo_head"))
+    (SHIELD_CODES.includes(type) || ITEM_SHIELDS.includes(asset))
   ) {
     return config.shieldStyle;
   }
