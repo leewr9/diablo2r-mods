@@ -868,6 +868,7 @@ function changeItemArmor(codes, select) {
 
   let Transform = 0;
   let InvTrans = 0;
+  let component = 0;
   let rArm = 0;
   let lArm = 0;
   let Torso = 0;
@@ -883,6 +884,7 @@ function changeItemArmor(codes, select) {
     if (itemcode == code && codes.includes(code)) {
       Transform = armor.rows[i].Transform;
       InvTrans = armor.rows[i].InvTrans;
+      component = armor.rows[i].component;
 
       if (ARMOR_CODES.includes(code)) {
         rArm = armor.rows[i].rArm;
@@ -901,6 +903,7 @@ function changeItemArmor(codes, select) {
     if (codes.includes(itemcode)) {
       armor.rows[i].Transform = Transform;
       armor.rows[i].InvTrans = InvTrans;
+      armor.rows[i].component = component;
 
       if (ARMOR_CODES.includes(code)) {
         armor.rows[i].rArm = rArm;

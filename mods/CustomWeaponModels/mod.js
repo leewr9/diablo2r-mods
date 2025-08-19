@@ -551,6 +551,7 @@ function changeItemWeapon(codes, select) {
 
   let wclass = "1hs";
   let twohandedwclass = "2hs";
+  let component = 5;
 
   const weaponFilename = "global\\excel\\weapons.txt";
   const weapons = D2RMM.readTsv(weaponFilename);
@@ -560,6 +561,7 @@ function changeItemWeapon(codes, select) {
     if (itemcode == code && codes.includes(code)) {
       wclass = weapons.rows[i].wclass;
       twohandedwclass = weapons.rows[i]["2handedwclass"];
+      component = weapons.rows[i].component;
       break;
     }
   }
@@ -567,13 +569,13 @@ function changeItemWeapon(codes, select) {
   for (const i in weapons.rows) {
     const itemcode = weapons.rows[i].code;
     if (codes.includes(itemcode)) {
+      weapons.rows[i].component = component;
+
       if (ITEM_ONE_HANDS.includes(select)) {
         weapons.rows[i].wclass = wclass;
-      }
-      else if (ITEM_TWO_HANDS.includes(select)) {
+      } else if (ITEM_TWO_HANDS.includes(select)) {
         weapons.rows[i]["2handedwclass"] = twohandedwclass;
-      }
-      else {
+      } else {
         weapons.rows[i].wclass = wclass;
         weapons.rows[i]["2handedwclass"] = twohandedwclass;
       }
@@ -591,7 +593,7 @@ function changeInventoryAsset(type, asset) {
   }
   if (
     config.twoHandStyle != "default" &&
-    (ONE_HAND_CODES.includes(type) || ITEM_ONE_HANDS.includes(asset))
+    (TWO_HAND_CODES.includes(type) || ITEM_TWO_HANDS.includes(asset))
   ) {
     return config.twoHandStyle;
   }
