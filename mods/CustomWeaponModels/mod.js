@@ -335,10 +335,11 @@ const ONE_HAND_CODES = [
   "obd",
   "obe",
   "obf",
-  "amb",
-  "amc",
+  "obb",
+  "obc",
   "amf",
 ];
+
 const TWO_HAND_CODES = [
   "lax",
   "bax",
@@ -461,8 +462,8 @@ const BOW_CODES = [
   "am2",
   "am6",
   "am7",
-  "obb",
-  "obc",
+  "amb",
+  "amc",
 ];
 
 const CLAW_CODES = [
