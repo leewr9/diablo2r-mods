@@ -550,6 +550,10 @@ function changeItemWeapon(codes, select) {
   const code = findItemCode(select);
 
   let component = 5;
+
+  let invwidth = 0;
+  let invheight = 0;
+
   let wclass = "1hs";
   let twohandedwclass = "2hs";
 
@@ -560,6 +564,10 @@ function changeItemWeapon(codes, select) {
     const itemcode = weapons.rows[i].code;
     if (itemcode == code && codes.includes(code)) {
       component = weapons.rows[i].component;
+
+      invwidth = weapons.rows[i].invwidth;
+      invheight = weapons.rows[i].invheight;
+
       wclass = weapons.rows[i].wclass;
       twohandedwclass = weapons.rows[i]["2handedwclass"];
       break;
@@ -570,6 +578,11 @@ function changeItemWeapon(codes, select) {
     const itemcode = weapons.rows[i].code;
     if (codes.includes(itemcode)) {
       weapons.rows[i].component = component;
+
+      if (config.inventoryStyleEnabled && invwidth > 0 && invheight > 0) {
+        weapons.rows[i].invwidth = invwidth;
+        weapons.rows[i].invheight = invheight;
+      }
 
       if (ITEM_ONE_HANDS.includes(select)) {
         weapons.rows[i].wclass = wclass;
