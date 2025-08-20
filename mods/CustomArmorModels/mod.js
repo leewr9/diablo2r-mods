@@ -866,11 +866,13 @@ function changeItemStyle(items, select) {
 function changeItemArmor(codes, select) {
   const code = findItemCode(select);
 
+  if (code == "") {
+    console.warn("Not found item code:", select);
+    return;
+  }
+
   let Transform = 0;
   let InvTrans = 0;
-
-  let invwidth = 0;
-  let invheight = 0;
 
   let rArm = 0;
   let lArm = 0;
@@ -887,9 +889,6 @@ function changeItemArmor(codes, select) {
     if (itemcode == code && codes.includes(code)) {
       Transform = armor.rows[i].Transform;
       InvTrans = armor.rows[i].InvTrans;
-
-      invwidth = armor.rows[i].invwidth;
-      invheight = armor.rows[i].invheight;
 
       if (ARMOR_CODES.includes(code)) {
         rArm = armor.rows[i].rArm;
@@ -908,11 +907,6 @@ function changeItemArmor(codes, select) {
     if (codes.includes(itemcode)) {
       armor.rows[i].Transform = Transform;
       armor.rows[i].InvTrans = InvTrans;
-
-      if (config.inventoryStyleEnabled && invwidth > 0 && invheight > 0) {
-        armor.rows[i].invwidth = invwidth;
-        armor.rows[i].invheight = invheight;
-      }
 
       if (ARMOR_CODES.includes(code)) {
         armor.rows[i].rArm = rArm;
