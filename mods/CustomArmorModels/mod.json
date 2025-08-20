@@ -3,7 +3,7 @@
   "description": "Allows changing the visual model of equipped armor to a preferred style.",
   "author": "Rooam Lee",
   "website": "https://github.com/leewr9/diablo2r-mods/tree/master/mods/CustomArmorModels",
-  "version": "1.3",
+  "version": "1.4",
   "config": [
     {
       "id": "armorStyle",

@@ -3,7 +3,7 @@
   "description": "Allows changing the visual model of equipped weapon to a preferred style.",
   "author": "Rooam Lee",
   "website": "https://github.com/leewr9/diablo2r-mods/tree/master/mods/CustomWeaponModels",
-  "version": "0.1",
+  "version": "1.0",
   "config": [
     {
       "id": "oneHandStyle",
