@@ -7,4 +7,4 @@ This feature enables players to customize the in-game appearance of their equipp
 - Download Link
   - https://raw.githubusercontent.com/leewr9/diablo2r-mods/refs/heads/master/files/CustomWeaponModels.zip
 - Nexsus Mods
-  - https://www.nexusmods.com/diablo2resurrected/mods/780
+  - https://www.nexusmods.com/diablo2resurrected/mods/785
