@@ -8,11 +8,13 @@ This repository is dedicated to creating and sharing custom Diablo II Rresurrect
 
 Allows changing the visual model of equipped armor to a preferred style.
 
-## Development Mods
-
 ### [Custom Weapon Models](https://github.com/leewr9/diablo2r-mods/tree/master/mods/CustomWeaponModels)
 
 Allows changing the visual model of equipped weapon to a preferred style.
+
+## Development Mods
+
+> None
 
 ## License
 
