@@ -172,6 +172,43 @@ const ITEM_CLAWS = [
   "h2h\\natalyas_mark",
 ];
 
+const ITEM_MISSILES = {
+  "bow\\short_bow": "missiles\\arrow",
+  "bow\\hunters_bow": "missiles\\arrow",
+  "bow\\long_bow": "missiles\\arrow",
+  "bow\\composite_bow": "missiles\\arrow",
+  "bow\\short_battle_bow": "missiles\\arrow",
+  "bow\\long_battle_bow": "missiles\\arrow",
+  "bow\\short_war_bow": "missiles\\arrow",
+  "bow\\long_war_bow": "missiles\\arrow",
+  "bow\\hellclap": "missiles\\arrow",
+  "bow\\kuko_shakaku": "missiles\\arrow",
+  "bow\\whichwild_string": "missiles\\arrow",
+  "bow\\stag_bow": "missiles\\arrow",
+  "bow\\reflex_bow": "missiles\\arrow",
+  "bow\\light_crossbow": "missiles\\x_bow_bolt",
+  "bow\\crossbow": "missiles\\x_bow_bolt",
+  "bow\\heavy_crossbow": "missiles\\x_bow_bolt",
+  "bow\\repeating_crossbow": "missiles\\x_bow_bolt",
+  "bow\\doomspittle": "missiles\\x_bow_bolt",
+  "bow\\leadcrow": "missiles\\x_bow_bolt",
+  "bow\\ichorsting": "missiles\\x_bow_bolt",
+  "bow\\hellcast": "missiles\\x_bow_bolt",
+  "bow\\pus_spiter": "missiles\\x_bow_bolt",
+  "bow\\langer_briser": "missiles\\x_bow_bolt",
+  "knife\\throwing_knife": "missiles\\missile_dagger",
+  "axe\\throwing_axe": "missiles\\missile_hand_axe",
+  "knife\\balanced_knife": "missiles\\balanced_knife_missile",
+  "axe\\balanced_axe": "missiles\\balanced_axe_missile",
+  "knife\\warshrike": "missiles\\warshrike_missile",
+  "javelin\\javelin": "missiles\\javelin",
+  "javelin\\pilum": "missiles\\pilum",
+  "javelin\\short_spear": "missiles\\short_spear_missile",
+  "javelin\\glaive": "missiles\\glaive",
+  "javelin\\throwing_spear": "missiles\\throwing_spear_missile",
+  "javelin\\maiden_javelin": "missiles\\maiden_javelin_missile",
+};
+
 const ONE_HAND_CODES = [
   "hax",
   "axe",
@@ -544,15 +581,31 @@ function changeItemStyle(items, select) {
     D2RMM.readJson(`${weaponDirFilename + items[i]}.json`);
     D2RMM.writeJson(`${weaponDirFilename + items[i]}.json`, selectItem);
   }
+
+  if (select in ITEM_MISSILES) {
+    const selectMissileFilename = `hd\\${ITEM_MISSILES[select]}.json`;
+    const selectMissile = D2RMM.readJson(selectMissileFilename);
+    for (const i in ITEM_MISSILES) {
+      D2RMM.readJson(`hd\\${ITEM_MISSILES[i]}.json`);
+      if (select.startsWith("bow") && i.startsWith("bow")) {
+        D2RMM.writeJson(`hd\\${ITEM_MISSILES[i]}.json`, selectMissile);
+      }
+      if (!select.startsWith("bow") && !i.startsWith("bow")) {
+        D2RMM.writeJson(`hd\\${ITEM_MISSILES[i]}.json`, selectMissile);
+      }
+    }
+  }
 }
 
 function changeItemWeapon(codes, select) {
   const code = findItemCode(select);
 
-  let component = 5;
+  if (code == "") {
+    console.warn("Not found item code:", select);
+    return;
+  }
 
-  let invwidth = 0;
-  let invheight = 0;
+  let component = 5;
 
   let wclass = "1hs";
   let twohandedwclass = "2hs";
@@ -565,9 +618,6 @@ function changeItemWeapon(codes, select) {
     if (itemcode == code && codes.includes(code)) {
       component = weapons.rows[i].component;
 
-      invwidth = weapons.rows[i].invwidth;
-      invheight = weapons.rows[i].invheight;
-
       wclass = weapons.rows[i].wclass;
       twohandedwclass = weapons.rows[i]["2handedwclass"];
       break;
@@ -578,11 +628,6 @@ function changeItemWeapon(codes, select) {
     const itemcode = weapons.rows[i].code;
     if (codes.includes(itemcode)) {
       weapons.rows[i].component = component;
-
-      if (config.inventoryStyleEnabled && invwidth > 0 && invheight > 0) {
-        weapons.rows[i].invwidth = invwidth;
-        weapons.rows[i].invheight = invheight;
-      }
 
       if (ITEM_ONE_HANDS.includes(select)) {
         weapons.rows[i].wclass = wclass;
